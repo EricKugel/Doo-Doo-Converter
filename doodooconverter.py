@@ -1,7 +1,7 @@
 import mido
 import statistics
 
-def convert(filename, channel):
+def convert(filename, channel, devConst = 3):
     midi = mido.MidiFile(filename)
     track = midi.tracks[0]
     speeds = []
@@ -20,7 +20,7 @@ def convert(filename, channel):
     for note in notes:
         if note.velocity == 0 and prevNote.velocity > 0 and note.channel == channel:
             speed = note.time
-            devs = int((speed - mean) / stdev * 3)
+            devs = int((speed - mean) / stdev * devConst)
 
             sound = "doo"
 
@@ -38,4 +38,5 @@ def convert(filename, channel):
     return output
 
 if __name__ == "__main__":
-    print(convert("Bacchanale.mid", 3))
+    # print(convert("Bacchanale.mid", 3))
+    print(convert("Spring.mid", 0, devConst = 2))
