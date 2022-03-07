@@ -38,5 +38,6 @@ def convert(filename, channel, devConst = 3):
     return output
 
 if __name__ == "__main__":
-    # print(convert("Bacchanale.mid", 3))
+    output = open("output.txt", "w")
+    output.write(convert("Double.mid", 0, devConst = 3))
     print(convert("Spring.mid", 0, devConst = 2))
